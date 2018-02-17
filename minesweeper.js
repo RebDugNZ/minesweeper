@@ -2,23 +2,38 @@ document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
 var board= {};
-board['cells']=
-  [{row:0, col:0, isMine:false, hidden:true, surroundingMines:1},
-  {row:0, col:1, isMine:true, hidden:true, surroundingMines:''},
-  {row:0, col:2, isMine:false, hidden:true, surroundingMines:2},
-  {row:0, col:3, isMine:false, hidden:true, surroundingMines:1},
-  {row:1, col:0, isMine:false, hidden:true, surroundingMines:2},
-  {row:1, col:1, isMine:false, hidden:true, surroundingMines:2},
-  {row:1, col:2, isMine:false, hidden:true, surroundingMines:3},
-  {row:1, col:3, isMine:true, hidden:true, surroundingMines:''},
-  {row:2, col:0, isMine:false, hidden:true, surroundingMines:1},
-  {row:2, col:1, isMine:true, hidden:true, surroundingMines:''},
-  {row:2, col:2, isMine:false, hidden:true, surroundingMines:3},
-  {row:2, col:3, isMine:false, hidden:true, surroundingMines:1},
-  {row:3, col:0, isMine:false, hidden:true, surroundingMines:1},
-  {row:3, col:1, isMine:false, hidden:true, surroundingMines:2},
-  {row:3, col:2, isMine:true, hidden:true, surroundingMines:''},
-  {row:3, col:3, isMine:false, hidden:true, surroundingMines:1}];
+  board.cells = [];
+  var boardSize = 3;
+  var bombNumber = 2;
+  makeBoard ()
+  getBombs ()
+
+  function makeBoard() {
+    for (var i = 0; i < boardSize; i++) {
+      for (var j = 0; j < boardSize; j++) {
+        board.cells.push({
+          row: i,
+          col: j,
+          isMine: false,
+          hidden: true,
+        })
+      }
+    }
+}
+
+function getBombs() {
+  for (var i=0; i < bombNumber; i++) {
+    placeBombs()
+  }
+}
+
+  function placeBombs() {
+    var randomSquare = 0
+    do {
+      randomSquare = Math.floor(Math.random() * boardSize)
+    } while (board.cells[randomSquare].isMine)
+    board.cells[randomSquare].isMine = true
+  }
 
 
 function startGame () {
