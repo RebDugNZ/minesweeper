@@ -31,15 +31,15 @@ function getBombs() {
     var randomSquare = 0
     do {
       randomSquare = Math.floor(Math.random() * (boardSize*boardSize))
-    } while (board.cells[randomSquare].isMine)
+    } while (board.cells[randomSquare].isMine=false)
     board.cells[randomSquare].isMine = true
   }
 
-
 function startGame () {
   for (var i=0; i < board.cells.length; i++){
-   board.cells.surroundingMines = countSurroundingMines(board.cells[i])
+   board.cells[i].surroundingMines = countSurroundingMines(board.cells[i])
  }
+
    document.addEventListener('click', checkForWin)
    document.addEventListener('oncontextmenu', checkForWin)
 
@@ -56,13 +56,12 @@ function checkForWin () {
     if (board.cells[i].isMine) {
       if (!board.cells[i].isMarked)
       return
-    }
-    else if (board.cells[i].hidden)
+    } else if (board.cells[i].hidden)
     return
   }
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
-  lib.displayMessage('You win!')
+  lib.displayMessage('Ka Rawe! You win!')
 }
 
 // Define this function to count the number of mines around the cell
@@ -76,6 +75,7 @@ function countSurroundingMines (cell) {
   var count = 0;
   for (var i=0; i < surroundingCells.length; i++) {
   if (surroundingCells[i].isMine == true) count++;
+}
   return count;
- }
+ 
 }
