@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', startGame)
 // Define your `board` object here!
 var board= {};
   board.cells = [];
-  var boardSize = 3;
-  var bombNumber = 2;
+  var boardSize = 5;
+  var bombNumber = 6;
   makeBoard ()
   getBombs ()
 
@@ -30,7 +30,7 @@ function getBombs() {
   function placeBombs() {
     var randomSquare = 0
     do {
-      randomSquare = Math.floor(Math.random() * boardSize)
+      randomSquare = Math.floor(Math.random() * (boardSize*boardSize))
     } while (board.cells[randomSquare].isMine)
     board.cells[randomSquare].isMine = true
   }
