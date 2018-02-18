@@ -58,5 +58,11 @@ div.hidden:hover {
 }
 
 div.marked, div.marked:hover {
-  background: no-repeat center/60% url("images/mark.svg") deepskyblue;
+  background: no-repeat center/60% url("images/mark.svg") orange;
+}
+.green {
+  color: green;
+}
+.red {
+  color: red;
 }

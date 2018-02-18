@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', startGame)
 // Define your `board` object here!
 var board= {};
   board.cells = [];
-  var boardSize = 5;
-  var bombNumber = 6;
+  var boardSize = 6;
+  var bombNumber = 8;
   makeBoard ()
   getBombs ()
 
@@ -44,7 +44,6 @@ function startGame () {
    document.addEventListener('oncontextmenu', checkForWin)
 
    lib.initBoard()
-
 }
 
 // Define this function to look for a win condition:
@@ -77,5 +76,6 @@ function countSurroundingMines (cell) {
   if (surroundingCells[i].isMine == true) count++;
 }
   return count;
- 
 }
+
+var changeColors = document.getElementsByClassName('board')[0].children.style.color='green';
