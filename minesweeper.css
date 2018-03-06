@@ -1,7 +1,6 @@
 html, body {
   height: 100%;
   font-family: 'Open Sans', sans-serif
-  background-color: grey;
 }
 
 body {
@@ -9,6 +8,7 @@ body {
   align-items: center;
   justify-content: flex-center;
   flex-direction: column;
+  background-color: grey;
 }
 
 #message, #notes {
