@@ -5,6 +5,7 @@ var board= {};
   board.cells = [];
   var boardSize = 6;
   var bombNumber = 8;
+
   makeBoard ()
   getBombs ()
 
@@ -63,6 +64,7 @@ function checkForWin () {
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
   lib.displayMessage('Ka Rawe! You win!')
+  new Audio("sound/partyHorn.mp3").play()
   document.getElementById('reset').classList.toggle("invisible");
   document.getElementById('reset').addEventListener('click', resetBoard)
 }
