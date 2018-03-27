@@ -38,12 +38,14 @@ function getBombs() {
 function startGame () {
   for (var i=0; i < board.cells.length; i++){
    board.cells[i].surroundingMines = countSurroundingMines(board.cells[i])
+
  }
 
    document.addEventListener('click', checkForWin)
    document.addEventListener('oncontextmenu', checkForWin)
 
    lib.initBoard()
+
 }
 
 // Define this function to look for a win condition:
@@ -61,6 +63,8 @@ function checkForWin () {
   // You can use this function call to declare a winner (once you've
   // detected that they've won, that is!)
   lib.displayMessage('Ka Rawe! You win!')
+  document.getElementById('reset').classList.toggle("invisible");
+  document.getElementById('reset').addEventListener('click', resetBoard)
 }
 
 // Define this function to count the number of mines around the cell
@@ -78,4 +82,11 @@ function countSurroundingMines (cell) {
   return count;
 }
 
-var changeColors = document.getElementsByClassName('board')[0].children.style.color='green';
+function resetBoard () {
+  board = {cells: []}
+  document.getElementsByClassName('board')[0].innerHTML = ''
+  makeBoard ()
+  getBombs ()
+  document.getElementById('reset').classList.toggle("invisible");
+  startGame()
+}
